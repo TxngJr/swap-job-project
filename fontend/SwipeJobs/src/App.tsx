@@ -11,7 +11,6 @@ import AuthNavigator from './navigations/AuthNavigator'
 import OnboardingNavigator from './navigations/OnboardingNavigator'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import HomeNavigator from './navigations/HomeNavigator'
-import ArrowBack from './components/ArrowBack'
 
 function App(): JSX.Element {
   const [isFirstLaunch, setIsFirstLaunch] = useState<boolean>(false)
@@ -34,7 +33,7 @@ function App(): JSX.Element {
   useEffect(() => {
     async function checkLoginState() {
       try {
-        const token = await AsyncStorage.removeItem('token')
+        const token = await AsyncStorage.getItem('token')
         if (token == null) {
           setIsLoggedIn(false);
         }
