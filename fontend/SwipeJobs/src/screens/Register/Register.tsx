@@ -1,32 +1,38 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
-import IconArrowBack from '../assets/IconArrowBack'
-import Logo from '../assets/Logo'
-import IconAlternateEmail from '../assets/IconAlternateEmail'
-import IconPassword from '../assets/IconPassword'
-import IconCall from '../assets/IconCall'
+import Logo from '../../assets/Logo'
+import IconAlternateEmail from '../../assets/IconAlternateEmail'
+import IconPassword from '../../assets/IconPassword'
+import IconCall from '../../assets/IconCall'
 
 
 type Props = {
-  navigation: any
+  navigation: any,
 }
 
 const Register = ({ navigation }: Props) => {
-  const onPressLogin = async () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
+
+  const handleSubmit = async () => {
     try {
-      navigation.navigate('Login')
+      navigation.navigate('Register1', { email, password, confirmPassword, phone, })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const handleSubmitLogin = async () => {
+    try {
+      navigation.replace('Login')
     } catch (error) {
       console.log(error)
     }
   }
   return (
     <View >
-      <View style={styles.backButtonContainer}>
-        <TouchableOpacity style={styles.backButton} onPress={()=>{navigation.navigate('Login')}} >
-          <IconArrowBack />
-        </TouchableOpacity>
-      </View>
       <View style={styles.logoContainer}>
         <Logo />
       </View>
@@ -34,13 +40,15 @@ const Register = ({ navigation }: Props) => {
         <Text style={styles.textHeader}>
           สมัครสมาชิก
         </Text>
-        <View style={styles.textContainer}>
+        <View style={[styles.textContainer, { marginTop: 5 }]}>
           <View style={styles.inputContainer}>
             <IconAlternateEmail />
             <TextInput
               style={styles.inputText}
               placeholder="อีเมล"
               keyboardType="default"
+              value={email}
+              onChangeText={setEmail}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -50,6 +58,8 @@ const Register = ({ navigation }: Props) => {
               secureTextEntry={true}
               placeholder="รหัสผ่าน"
               keyboardType="default"
+              value={password}
+              onChangeText={setPassword}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -59,6 +69,8 @@ const Register = ({ navigation }: Props) => {
               secureTextEntry={true}
               placeholder="ยืนยันรหัสผ่าน"
               keyboardType="default"
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -67,16 +79,18 @@ const Register = ({ navigation }: Props) => {
               style={styles.inputText}
               placeholder="เบอร์โทรศัพท์"
               keyboardType="phone-pad"
+              value={phone}
+              onChangeText={setPhone}
             />
           </View>
           <View style={styles.buttonContainer}>
             <View>
-              <TouchableOpacity style={styles.button} onPress={onPressLogin}>
+              <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                 <Text style={styles.textButton}>สมัครสมาชิก</Text>
               </TouchableOpacity>
             </View>
-            <View style={{ marginTop: 10 }}>
-              <TouchableOpacity onPress={onPressLogin}>
+            <View style={{ marginTop: 15 }}>
+              <TouchableOpacity onPress={handleSubmitLogin}>
                 <Text>มีบัญชีอยู่แล้ว</Text>
               </TouchableOpacity>
             </View>
@@ -91,28 +105,19 @@ const Register = ({ navigation }: Props) => {
 export default Register
 
 const styles = StyleSheet.create({
-  backButtonContainer: {
-    marginTop: 5,
-    marginLeft: 5,
-    alignItems: 'flex-start',
-  },
-  backButton: {
-    width: 48,
-    height: 48,
-  },
   logoContainer: {
-    marginVertical: 20,
+    marginVertical: 40,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textContainer: {
     marginHorizontal: 15,
   },
   textHeader: {
     fontSize: 50,
-    fontFamily: 'kanit'
   },
   buttonContainer: {
+    marginTop: 20,
     alignItems: 'center',
     justifyContent: 'space-between'
   },
@@ -121,14 +126,16 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     marginBottom: 10,
+    justifyContent: 'space-around',
   },
   inputText: {
     height: 40,
-    width: 300,
+    width: 285,
     borderBottomWidth: 2,
     borderBottomColor: '#BAB7B7',
     borderBottomStartRadius: 100,
     paddingLeft: 10,
+
   },
   button: {
     width: 320,

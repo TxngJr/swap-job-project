@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
-import IconArrowBack from '../assets/IconArrowBack'
 import Logo from '../assets/Logo'
 import IconAlternateEmail from '../assets/IconAlternateEmail'
 import IconPassword from '../assets/IconPassword'
@@ -12,27 +11,23 @@ type Props = {
 }
 
 const Login = ({ navigation }: Props) => {
-  const onPressLogin = async () => {
+  const handleSubmitLogin = async () => {
     try {
-      navigation.navigate('HomeNavigator')
+      navigation.replace('HomeNavigator')
     } catch (error) {
       console.log(error)
     }
   }
-  const onPressRegister = async () => {
+  const handleSubmitRegister = async () => {
     try {
-      navigation.navigate('Register')
+      navigation.replace('Register')
     } catch (error) {
       console.log(error)
     }
   }
+
   return (
-    <View>
-      <View style={styles.backButtonContainer}>
-        <TouchableOpacity style={styles.backButton} onPress={()=>{navigation.navigate('Register')}} >
-          <IconArrowBack />
-        </TouchableOpacity>
-      </View>
+    <View >
       <View style={styles.logoContainer}>
         <Logo />
       </View>
@@ -40,7 +35,7 @@ const Login = ({ navigation }: Props) => {
         <Text style={styles.textHeader}>
           เข้าสู่ระบบ
         </Text>
-        <View style={styles.textContainer}>
+        <View style={[styles.textContainer, { marginTop: 5 }]}>
           <View style={styles.inputContainer}>
             <IconAlternateEmail />
             <TextInput
@@ -58,14 +53,21 @@ const Login = ({ navigation }: Props) => {
               keyboardType="default"
             />
           </View>
+          <View style={styles.forgotPasswordContainer}>
+            <TouchableOpacity>
+              <Text>
+                ลืมรหัสผ่าน
+              </Text>
+            </TouchableOpacity>
+          </View>
           <View style={styles.buttonContainer}>
             <View>
-              <TouchableOpacity style={styles.button} onPress={onPressLogin}>
+              <TouchableOpacity style={styles.button} onPress={handleSubmitLogin}>
                 <Text style={styles.textButton}>เข้าสู่ระบบ</Text>
               </TouchableOpacity>
             </View>
-            <View style={{ marginTop: 10 }}>
-              <TouchableOpacity onPress={onPressRegister}>
+            <View style={{ marginTop: 15 }}>
+              <TouchableOpacity onPress={handleSubmitRegister}>
                 <Text>ยังไม่มีบัญชี</Text>
               </TouchableOpacity>
             </View>
@@ -79,45 +81,41 @@ const Login = ({ navigation }: Props) => {
 export default Login
 
 const styles = StyleSheet.create({
-  backButtonContainer: {
-    marginTop: 5,
-    marginLeft: 5,
-    alignItems: 'flex-start',
-  },
-  backButton: {
-    width: 48,
-    height: 48,
-  },
   logoContainer: {
-    marginVertical: 20,
+    marginVertical: 40,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textContainer: {
     marginHorizontal: 15,
   },
   textHeader: {
     fontSize: 50,
-    fontFamily: 'kanit'
   },
   inputContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'center',
     marginBottom: 10,
+    justifyContent: 'space-around',
+  },
+  buttonContainer: {
+    marginTop: 15,
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   inputText: {
     height: 40,
-    width: 300,
+    width: 285,
     borderBottomWidth: 2,
     borderBottomColor: '#BAB7B7',
     borderBottomStartRadius: 100,
     paddingLeft: 10,
+
   },
-  buttonContainer: {
-    marginTop: 150,
-    alignItems: 'center',
-    justifyContent: 'space-between'
+  forgotPasswordContainer:{
+    marginTop:10,
+    alignItems:'flex-end',
   },
   button: {
     width: 320,
