@@ -26,7 +26,7 @@ const LoginPage = ({ navigation }: Props) => {
   };
 
   return (
-    <View>
+    <View style={{backgroundColor:'#FFFFFF',height:800}} >
       <View style={{ paddingTop: 48, alignItems: 'center' }}>
         <Logo size={232} />
       </View>

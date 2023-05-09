@@ -14,7 +14,7 @@ type Props = {
 const Onboarding = ({ onNext, activeIndex, image, headerStyleBlue, headerTitle, title, }: Props) => {
 
     return (
-        <View>
+        <View style={{backgroundColor:'#FFFFFF',height:800}}>
             <View style={{ paddingTop: 30, alignItems: 'center' }}>
                 <Image style={styles.image}
                     source={image}
@@ -25,7 +25,7 @@ const Onboarding = ({ onNext, activeIndex, image, headerStyleBlue, headerTitle, 
                     <Text style={[{ fontSize: 36 }, headerStyleBlue === true && { color: '#FFFFFF' }]}>{headerTitle}</Text>
                 </View>
                 <View style={{ marginTop: 20, height: 220 }}>
-                    <Text style={{ fontSize: 32, textAlign:'center' }}>{title}</Text>
+                    <Text style={{ fontSize: 32, textAlign: 'center' }}>{title}</Text>
                 </View>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
@@ -36,7 +36,7 @@ const Onboarding = ({ onNext, activeIndex, image, headerStyleBlue, headerTitle, 
                     <View style={[{ width: 12, height: 12, borderRadius: 100, backgroundColor: '#D9D9D9' }, activeIndex === 4 && { backgroundColor: '#0171E0' }]} />
                 </View>
                 <View style={{ position: 'absolute', right: 20, alignSelf: 'center' }}>
-                    <Button title='Next' width={50} circle={true} arrowRightAlt={true} onPress={onNext} />
+                    <Button title='Next' colors='#00B3FF' width={50} circle={true} arrowRightAlt={true} onPress={onNext} />
                 </View>
             </View>
 

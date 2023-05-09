@@ -1,22 +1,22 @@
 import { StyleSheet } from 'react-native'
 import React, { useState } from 'react'
-import Onboarding from '../../../components/Onboarding';
+import Onboarding from '../../components/Onboarding';
 
 type Props = {
   navigation: any
 }
 
-const OnboardingEmployerPage1 = ({ navigation }: Props) => {
+const OnboardingPage2 = ({ navigation }: Props) => {
 
   const handleNext = () => {
-    navigation.navigate('EmployeePage2')
+    navigation.navigate('OnboardingPage3')
   };
 
   return (
     <Onboarding
       onNext={handleNext}
       activeIndex={1}
-      image={require('../../../assets/ImageOnboarding/Picture1.png')}
+      image={require('../../assets/ImageOnboarding/Picture1.png')}
       headerStyleBlue={true}
       headerTitle='ให้พวกเรารู้จักคุณมากขึ้น'
       title='กรอกข้อมูลต่าง ๆ ของคุณ'
@@ -24,9 +24,4 @@ const OnboardingEmployerPage1 = ({ navigation }: Props) => {
   )
 }
 
-export default OnboardingEmployerPage1
-
-const styles = StyleSheet.create({
-  container: {},
-  title: {},
-})
+export default OnboardingPage2

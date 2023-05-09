@@ -4,6 +4,7 @@ import ArrowRightAlt from '../assets/ArrowRightAlt'
 
 type Props = {
     title: string
+    colors?: string
     width?: number
     circle?: boolean
     arrowRightAlt?: boolean
@@ -11,9 +12,9 @@ type Props = {
     onPress: () => void
 }
 
-const Button = ({ title, width, circle, arrowRightAlt, noStyle = false, onPress }: Props) => {
+const Button = ({ title, colors, width, circle, arrowRightAlt, noStyle = false, onPress }: Props) => {
     return (
-        <TouchableOpacity style={noStyle === false && [styles.container, { width: width }, circle === true && { borderRadius: 50 }]} onPress={onPress}>
+        <TouchableOpacity style={noStyle === false && [styles.container, { width: width, backgroundColor: colors }, circle === true && { borderRadius: 50 }]} onPress={onPress}>
             {arrowRightAlt ? <ArrowRightAlt /> : <Text style={noStyle === false && [styles.text]}>{title}</Text>}
         </TouchableOpacity>
     )
