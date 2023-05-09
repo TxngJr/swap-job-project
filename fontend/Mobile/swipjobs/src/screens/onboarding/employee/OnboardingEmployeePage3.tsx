@@ -8,8 +8,9 @@ type Props = {
 
 const OnboardingEmployeePage3 = ({ navigation }: Props) => {
   const handleNext = () => {
-    navigation.navigate('EmployeePage4')
+    navigation.navigate('OnboardingEmployeePage4')
   };
+  
   return (
     <Onboarding
       onNext={handleNext}

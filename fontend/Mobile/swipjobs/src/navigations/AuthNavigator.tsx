@@ -2,6 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import LoginPage from '../screens/LoginPage'
 import RegisterPage from '../screens/register/RegisterPage'
+import AppNavigator from './AppNavigator'
 
 const Stack = createStackNavigator()
 
@@ -12,6 +13,7 @@ const OnboardingNavigator = (props: Props) => {
     <Stack.Navigator initialRouteName='LoginPage' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="RegisterPage" component={RegisterPage} />
+        <Stack.Screen name="AppNavigator" component={AppNavigator} />
     </Stack.Navigator>
   )
 }

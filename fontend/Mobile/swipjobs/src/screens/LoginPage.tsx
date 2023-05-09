@@ -1,14 +1,30 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from '../assets/Logo'
 import { TextInput } from 'react-native-gesture-handler'
 import Button from '../components/Button'
+import { login } from '../services/AuthAPI'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type Props = {
   navigation: any
 }
 
 const LoginPage = ({ navigation }: Props) => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin  = async () => {
+    try {
+      const token = await login({email, password});
+      await AsyncStorage.setItem('accessToken', token);
+        navigation.replace('AppNavigator')
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
     <View>
       <View style={{ paddingTop: 48, alignItems: 'center' }}>
@@ -19,6 +35,8 @@ const LoginPage = ({ navigation }: Props) => {
         <View style={{ paddingHorizontal: 20 }}>
           <View>
             <TextInput
+              value={email}
+              onChangeText={setEmail}
               placeholder="อีเมล"
               keyboardType="default"
             />
@@ -26,6 +44,8 @@ const LoginPage = ({ navigation }: Props) => {
           </View>
           <View>
             <TextInput
+              value={password}
+              onChangeText={setPassword}
               secureTextEntry={true}
               placeholder="รหัสผ่าน"
               keyboardType="default"
@@ -41,7 +61,7 @@ const LoginPage = ({ navigation }: Props) => {
           <Button
             title='เข้าสู่ระบบ'
             width={320}
-            onPress={() => { }}
+            onPress={handleLogin}
           />
           <View />
           <Button

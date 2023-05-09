@@ -10,14 +10,14 @@ type Props = {
 const OnboardingPage = ({ navigation }: Props) => {
   const handleSubmitPageEmployee = () => {
     try {
-      navigation.navigate('EmployeePage1')
+      navigation.navigate('OnboardingEmployeePage1')
     } catch (error) {
       console.log(error)
     }
   }
   const handleSubmitPageEmployer = () => {
     try {
-      navigation.navigate('EmployerPage1')
+      navigation.navigate('OnboardingEmployeePage1')
     } catch (error) {
       console.log(error)
     }

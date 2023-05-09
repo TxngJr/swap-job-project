@@ -9,7 +9,7 @@ type Props = {
 const OnboardingEmployeePage1 = ({ navigation }: Props) => {
 
   const handleNext = () => {
-    navigation.navigate('EmployeePage2')
+    navigation.navigate('OnboardingEmployeePage2')
   };
 
   return (
