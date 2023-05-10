@@ -1,6 +1,5 @@
-import { StyleSheet } from 'react-native'
-import React, { useState } from 'react'
-import Onboarding from '../../components/Onboarding';
+import React from 'react'
+import Onboarding from '../../components/Onboarding'
 
 type Props = {
   navigation: any
@@ -9,7 +8,7 @@ type Props = {
 const OnboardingPage3 = ({ navigation }: Props) => {
 
   const handleNext = () => {
-    navigation.navigate('OnboardingPage4')
+    navigation.replace('OnboardingPage4')
   };
 
   return (

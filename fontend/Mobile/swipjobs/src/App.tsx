@@ -11,7 +11,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import OnboardingNavigator from './navigations/OnboardingNavigator'
 import AuthNavigator from './navigations/AuthNavigator';
 import AppNavigator from './navigations/AppNavigator';
-import { View } from 'react-native'
 
 function App(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);

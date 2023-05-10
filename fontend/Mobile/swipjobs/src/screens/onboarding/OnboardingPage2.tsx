@@ -1,6 +1,5 @@
-import { StyleSheet } from 'react-native'
-import React, { useState } from 'react'
-import Onboarding from '../../components/Onboarding';
+import React from 'react'
+import Onboarding from '../../components/Onboarding'
 
 type Props = {
   navigation: any
@@ -8,12 +7,17 @@ type Props = {
 
 const OnboardingPage2 = ({ navigation }: Props) => {
 
+  const handleSkip = () => {
+    navigation.replace('OnboardingPage6')
+  };
+  
   const handleNext = () => {
-    navigation.navigate('OnboardingPage3')
+    navigation.replace('OnboardingPage3')
   };
 
   return (
     <Onboarding
+      onSkip={handleSkip}
       onNext={handleNext}
       activeIndex={1}
       image={require('../../assets/ImageOnboarding/Picture1.png')}

@@ -1,7 +1,5 @@
-import { StyleSheet } from 'react-native'
-import React, { useState } from 'react'
-import Onboarding from '../../components/Onboarding';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react'
+import Onboarding from '../../components/Onboarding'
 
 type Props = {
   navigation: any
@@ -9,9 +7,8 @@ type Props = {
 
 const OnboardingPage5 = ({ navigation }: Props) => {
 
-  const handleNext = async () => {
-    await AsyncStorage.setItem('onboardingStatus', 'true')
-    navigation.replace('AuthNavigator')
+  const handleNext = () => {
+    navigation.replace('OnboardingPage6')
   };
 
   return (
@@ -25,8 +22,3 @@ const OnboardingPage5 = ({ navigation }: Props) => {
 }
 
 export default OnboardingPage5
-
-const styles = StyleSheet.create({
-  container: {},
-  title: {},
-})

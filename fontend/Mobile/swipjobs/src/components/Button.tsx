@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import ArrowRightAlt from '../assets/ArrowRightAlt'
+import IconArrowRightAlt from '../assets/IconArrowRightAlt'
 
 type Props = {
     title: string
@@ -8,31 +8,47 @@ type Props = {
     width?: number
     circle?: boolean
     arrowRightAlt?: boolean
-    noStyle?: boolean
+    isStyle: boolean
     onPress: () => void
+    disabled?: boolean
 }
 
-const Button = ({ title, colors, width, circle, arrowRightAlt, noStyle = false, onPress }: Props) => {
+const Button = ({ title, colors = '00B3FF', width, circle, arrowRightAlt, isStyle, onPress, disabled = false }: Props) => {
     return (
-        <TouchableOpacity style={noStyle === false && [styles.container, { width: width, backgroundColor: colors }, circle === true && { borderRadius: 50 }]} onPress={onPress}>
-            {arrowRightAlt ? <ArrowRightAlt /> : <Text style={noStyle === false && [styles.text]}>{title}</Text>}
+        <TouchableOpacity
+            disabled={disabled}
+            style={
+                isStyle && [{
+                    width: width,
+                    backgroundColor: colors,
+                    height: 50,
+                    borderRadius: 10,
+                    justifyContent: 'center',
+
+                },
+                circle && {
+                    borderRadius: 50
+                },
+                disabled && {
+                    backgroundColor: '#BAB7B7'
+                }]}
+            onPress={onPress}>
+            {
+                arrowRightAlt ?
+                    <IconArrowRightAlt />
+                    :
+                    <Text
+                        style={
+                            isStyle && {
+                                color: '#FFFFFF',
+                                fontSize: 20,
+                                textAlign: 'center',
+                            }}>
+                        {title}
+                    </Text>
+            }
         </TouchableOpacity>
     )
 }
 
 export default Button
-
-const styles = StyleSheet.create({
-    container: {
-        width: 320,
-        height: 50,
-        borderRadius: 10,
-        justifyContent: 'center',
-        backgroundColor: '#00B3FF',
-    },
-    text: {
-        color: '#FFFFFF',
-        fontSize: 20,
-        textAlign: 'center',
-    }
-})

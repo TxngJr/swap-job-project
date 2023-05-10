@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native'
-import React, { useState } from 'react'
-import Onboarding from '../../components/Onboarding';
+import React from 'react'
+import Onboarding from '../../components/Onboarding'
 
 type Props = {
   navigation: any
 }
 
 const OnboardingPage4 = ({ navigation }: Props) => {
+
   const handleNext = () => {
-    navigation.navigate('OnboardingPage5')
+    navigation.replace('OnboardingPage5')
   };
   
   return (
@@ -23,8 +23,3 @@ const OnboardingPage4 = ({ navigation }: Props) => {
 }
 
 export default OnboardingPage4
-
-const styles = StyleSheet.create({
-  container: {},
-  title: {},
-})

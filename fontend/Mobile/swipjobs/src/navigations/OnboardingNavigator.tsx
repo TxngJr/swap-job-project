@@ -5,6 +5,7 @@ import OnboardingPage2 from '../screens/onboarding/OnboardingPage2'
 import OnboardingPage3 from '../screens/onboarding/OnboardingPage3'
 import OnboardingPage4 from '../screens/onboarding/OnboardingPage4'
 import OnboardingPage5 from '../screens/onboarding/OnboardingPage5'
+import OnboardingPage6 from '../screens/onboarding/OnboardingPage6'
 import AuthNavigator from './AuthNavigator'
 
 const Stack = createStackNavigator()
@@ -19,6 +20,7 @@ const OnboardingNavigator = (props: Props) => {
       <Stack.Screen name="OnboardingPage3" component={OnboardingPage3} />
       <Stack.Screen name="OnboardingPage4" component={OnboardingPage4} />
       <Stack.Screen name="OnboardingPage5" component={OnboardingPage5} />
+      <Stack.Screen name="OnboardingPage6" component={OnboardingPage6} />
       <Stack.Screen name='AuthNavigator' component={AuthNavigator} />
     </Stack.Navigator>
   )

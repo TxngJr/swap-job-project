@@ -4,7 +4,7 @@ import Svg, { Path } from 'react-native-svg'
 
 type Props = {}
 
-const ArrowRightAlt = (props: Props) => {
+const IconArrowRightAlt = (props: Props) => {
     return (
         <View style={styles.container}>
             <Svg viewBox="0 96 960 960" >
@@ -14,7 +14,7 @@ const ArrowRightAlt = (props: Props) => {
     )
 }
 
-export default ArrowRightAlt
+export default IconArrowRightAlt
 
 const styles = StyleSheet.create({
     container: {

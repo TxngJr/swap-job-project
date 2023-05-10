@@ -6,9 +6,11 @@ import AppNavigator from './AppNavigator'
 
 const Stack = createStackNavigator()
 
-type Props = {}
+type Props = {
+  navigation:any
+}
 
-const OnboardingNavigator = (props: Props) => {
+const OnboardingNavigator = ({navigation}: Props) => {
   return (
     <Stack.Navigator initialRouteName='LoginPage' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LoginPage" component={LoginPage} />
